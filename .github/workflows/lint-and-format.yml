@@ -30,3 +30,6 @@ jobs:
 
       - name: Run lint-staged on all changed files
         run: pnpm exec lint-staged --diff="origin/main...HEAD" --diff-filter=ACMR
+
+      - name: Check commit messages
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
